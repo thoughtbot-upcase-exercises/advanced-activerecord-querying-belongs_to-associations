@@ -1,0 +1,29 @@
+#!/usr/bin/sh
+
+# Run this script immediately after cloning the codebase.
+# https://github.com/thoughtbot/guides/tree/master/protocol
+
+# Exit if any subcommand fails
+set -e
+
+# Check for necessary programs
+for program in ruby gem createdb; do
+  if ! command -v "$program" > /dev/null; then
+    echo "The $program command is required to perform this exercise." 1>&2
+    exit 1
+  fi
+done
+
+# Set up Ruby dependencies via Bundler
+if ! command -v bundle > /dev/null; then
+  gem install bundler --no-document --pre
+fi
+
+bundle install
+
+# Add bin to path if using thoughtbot dotfiles:
+# http://goo.gl/CPzari
+mkdir -p .git/safe
+
+# Create a Postgresql database for exercises
+createdb upcase_exercise 2>/dev/null || true
