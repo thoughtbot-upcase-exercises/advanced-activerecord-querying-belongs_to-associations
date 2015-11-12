@@ -1,5 +1,6 @@
 require "active_record"
 require "database_cleaner"
+require "factory_girl"
 
 Dir.glob(File.expand_path("../../app/models/*.rb", __FILE__)) do |model|
   require model
@@ -41,7 +42,36 @@ end
 
 CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 
+FactoryGirl.define do
+  sequence :name do |value|
+    "name#{value}sequence"
+  end
+
+  factory :location do
+    name
+    region
+  end
+
+  factory :person do
+    location
+    name
+    role
+    salary 0
+  end
+
+  factory :region do
+    name
+  end
+
+  factory :role do
+    name
+    billable true
+  end
+end
+
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:deletion)
   end
