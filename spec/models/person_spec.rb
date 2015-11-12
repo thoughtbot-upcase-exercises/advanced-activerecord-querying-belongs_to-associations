@@ -3,8 +3,6 @@ require "spec_helper"
 describe Person do
   describe ".in_region" do
     it "returns people in the named region" do
-      pending "Fix this spec second"
-
       region = create(:region, name: "expected")
       other_region = create(:region, name: "other")
       in_region = create(:location, region: region)
@@ -22,8 +20,6 @@ describe Person do
 
   describe ".alphabetically_by_region_and_location" do
     it "orders people by region name, then location name, then person name" do
-      pending "Fix this spec last"
-
       region2 = create(:region, name: "region2")
       region3 = create(:region, name: "region3")
       region1 = create(:region, name: "region1")

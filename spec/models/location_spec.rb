@@ -3,8 +3,6 @@ require "spec_helper"
 describe Location do
   describe ".in_region" do
     it "returns locations in the named region" do
-      pending "Fix this spec first"
-
       region = create(:region, name: "expected")
       other_region = create(:region, name: "other")
       create(:location, region: region, name: "in-expected-region-one")

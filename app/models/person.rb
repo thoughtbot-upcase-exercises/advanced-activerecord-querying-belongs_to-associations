@@ -5,10 +5,14 @@ class Person < ActiveRecord::Base
   has_many :employees, class_name: "Person", foreign_key: :manager_id
 
   def self.in_region(region)
-    all
+    with_regions.where("regions.name = ?", region)
   end
 
   def self.alphabetically_by_region_and_location
-    all
+    with_regions.order("regions.name ASC, locations.name ASC, name ASC")
+  end
+
+  def self.with_regions
+    joins(location: :region)
   end
 end

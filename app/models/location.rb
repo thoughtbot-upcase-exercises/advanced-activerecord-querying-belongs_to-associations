@@ -3,6 +3,6 @@ class Location < ActiveRecord::Base
   has_many :people
 
   def self.in_region(region)
-    all
+    joins(:region).where("regions.name = ?", region)
   end
 end
