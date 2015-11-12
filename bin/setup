@@ -27,3 +27,6 @@ mkdir -p .git/safe
 
 # Create a Postgresql database for exercises
 createdb upcase_exercise 2>/dev/null || true
+
+# Run tests to print failure messages
+bin/rake
