@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.alphabetically_by_region_and_location
-    with_regions.order("regions.name ASC, locations.name ASC, name ASC")
+    with_regions.order("regions.name, locations.name, name")
   end
 
   def self.with_regions
