@@ -1,6 +1,6 @@
 require "active_record"
 require "database_cleaner"
-require "factory_girl"
+require "factory_bot"
 
 Dir.glob(File.expand_path("../../app/models/*.rb", __FILE__)) do |model|
   require model
@@ -20,7 +20,7 @@ ActiveRecord::Base.establish_connection(
 CreateSchema.suppress_messages { CreateSchema.migrate(:up) }
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:deletion)

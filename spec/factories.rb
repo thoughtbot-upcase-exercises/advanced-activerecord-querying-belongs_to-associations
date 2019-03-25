@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence :name do |value|
     "name#{value}sequence"
   end
@@ -12,7 +12,7 @@ FactoryGirl.define do
     location
     name
     role
-    salary 0
+    salary { 0 }
   end
 
   factory :region do
@@ -21,6 +21,6 @@ FactoryGirl.define do
 
   factory :role do
     name
-    billable true
+    billable { true }
   end
 end
