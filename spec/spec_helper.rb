@@ -13,7 +13,6 @@ ActiveRecord::Base.establish_connection(
   adapter:  "postgresql",
   database: "upcase_exercise",
   encoding: "utf8",
-  host: "localhost",
   min_messages: "warning"
 )
 
