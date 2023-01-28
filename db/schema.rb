@@ -1,4 +1,4 @@
-class CreateSchema < ActiveRecord::Migration
+class CreateSchema < ActiveRecord::Migration[7.0]
   def self.up
     create_table :people, force: true do |table|
       table.string :name, null: false
